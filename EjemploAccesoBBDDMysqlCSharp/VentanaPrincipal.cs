@@ -17,6 +17,8 @@ namespace EjemploAccesoBBDDMysqlCSharp
         {
             InitializeComponent();
             rellenaComboPelis();
+            rellenaComboUsuario();
+            CenterToScreen();
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -49,5 +51,40 @@ namespace EjemploAccesoBBDDMysqlCSharp
             conexion.Close();
         }
 
+        private void rellenaComboUsuario()
+        {
+            MySqlConnection conexion = new ConexionBBDD().conecta();
+            MySqlCommand comando = new MySqlCommand("SELECT * FROM usuario ORDER BY DNI ;", conexion);
+            MySqlDataReader resultado = comando.ExecuteReader();
+
+            //Mientras vaya leyendo resultados, va metiéndolos al comboBox
+            //Además, separa los valores por medio de guiones
+            while (resultado.Read())
+            {
+
+                desplegableDNIs.Items.Add(    resultado.GetString("DNI") + "-" 
+                                            + resultado.GetString("Nombre") + "-" 
+                                            + resultado.GetString("Apellido")  );
+            }
+            conexion.Close();
+        }
+
+        private void desplegableDNIs_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String aux = desplegableDNIs.SelectedItem.ToString();
+            String dniSeleccionado = aux.Substring(0, aux.IndexOf("-"));
+            //Console.WriteLine(dniSeleccionado);
+            
+            try
+            {
+                pictureBox1.Image = Image.FromFile(System.IO.Path.GetDirectoryName(Application.ExecutablePath) + @"\Resources\imagenes\" + dniSeleccionado + ".jpg");
+            }
+            catch 
+            {
+                pictureBox1.Image = Image.FromFile(System.IO.Path.GetDirectoryName(Application.ExecutablePath) + @"\Resources\imagenes\noimage.jpg");
+
+            }
+
+        }
     }
 }

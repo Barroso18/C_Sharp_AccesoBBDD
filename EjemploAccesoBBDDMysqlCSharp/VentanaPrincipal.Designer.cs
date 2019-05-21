@@ -30,6 +30,9 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.desplegableTitulos = new System.Windows.Forms.ComboBox();
+            this.desplegableDNIs = new System.Windows.Forms.ComboBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -50,15 +53,35 @@
             this.desplegableTitulos.Size = new System.Drawing.Size(259, 21);
             this.desplegableTitulos.TabIndex = 1;
             // 
+            // desplegableDNIs
+            // 
+            this.desplegableDNIs.FormattingEnabled = true;
+            this.desplegableDNIs.Location = new System.Drawing.Point(13, 174);
+            this.desplegableDNIs.Name = "desplegableDNIs";
+            this.desplegableDNIs.Size = new System.Drawing.Size(258, 21);
+            this.desplegableDNIs.TabIndex = 2;
+            this.desplegableDNIs.SelectedIndexChanged += new System.EventHandler(this.desplegableDNIs_SelectedIndexChanged);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(590, 78);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(153, 179);
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
             // VentanaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.desplegableDNIs);
             this.Controls.Add(this.desplegableTitulos);
             this.Controls.Add(this.label1);
             this.Name = "VentanaPrincipal";
             this.Text = "VentanaPrincipal";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -68,5 +91,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox desplegableTitulos;
+        private System.Windows.Forms.ComboBox desplegableDNIs;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
